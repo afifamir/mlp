@@ -1,8 +1,5 @@
 import sys
 from dataclasses import dataclass
-
-import pickle
-
 import numpy as np
 import pandas as pd
 
@@ -39,7 +36,7 @@ class DataTransformation:
 
             cat_pipeline= Pipeline(
                 steps = [
-                    ("imputer", SimpleImputer(strategy = "most_frequent")),
+                    ("imputer", SimpleImputer(strategy="most_frequent")),
                     ("one_hot_encoder", OneHotEncoder()),
                     ("scaler", StandardScaler(with_mean = False))
                 ]
@@ -51,7 +48,7 @@ class DataTransformation:
             preprocessor = ColumnTransformer(
                 [
                     ("num_pipeline", num_pipeline, numerical_columns),
-                    ("cat_pipeline", cat_pipeline, categorical_columns)
+                    ("cat_pipeline", cat_pipeline, categorical_columns),
                 ]
             )
 
